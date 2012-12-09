@@ -1,0 +1,20 @@
+{
+    "name": "havvg/propel-autoexpire-behavior",
+    "description": "The AutoExpireBehavior adds automatic expiration to your model.",
+    "keywords": [ "propel", "behavior", "expiration", "auto-expire" ],
+    "authors": [
+        {
+            "name": "Toni Uebernickel",
+            "email": "tuebernickel@gmail.com"
+        }
+    ],
+    "require": {
+        "propel/propel1": ">=1.6.4"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "minimum-stability": "dev"
+}
