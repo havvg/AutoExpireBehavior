@@ -42,6 +42,15 @@ class AutoExpireBehaviorTest extends PHPUnit_Framework_TestCase
             <parameter name="auto_delete" value="true" />
         </behavior>
     </table>
+
+    <table name="not_required_token" phpName="AEBNotRequiredToken">
+        <column name="id" type="integer" autoIncrement="true" primaryKey="true" />
+        <column name="token" type="varchar" size="255" required="true" primaryString="true" />
+
+        <behavior name="auto_expire">
+            <parameter name="required" value="false" />
+        </behavior>
+    </table>
 </database>
 XML;
     }
@@ -199,5 +208,29 @@ XML;
             'The fetched token is expired.');
         $this->assertTrue($token->isDeleted(),
             'The expired token has been deleted automatically.');
+    }
+
+    /**
+     * @depends testSetupIsFine
+     */
+    public function testRequiredIsSet()
+    {
+        $tableMap = new AEBTokenTableMap();
+        $column = $tableMap->getColumn('expires_at');
+
+        $this->assertTrue($column->isNotNull(),
+            'By default the expiration date is expired.');
+    }
+
+    /**
+     * @depends testSetupIsFine
+     */
+    public function testRequiredIsNotSet()
+    {
+        $tableMap = new AEBNotRequiredTokenTableMap();
+        $column = $tableMap->getColumn('expires_at');
+
+        $this->assertFalse($column->isNotNull(),
+            'The expires_at column may be optional.');
     }
 }

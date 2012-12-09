@@ -16,7 +16,7 @@ class AutoExpireBehavior extends Behavior
             $this->getTable()->addColumn(array(
                 'name' => $columnName,
                 'type' => 'TIMESTAMP',
-                'required' => $this->booleanValue($this->getParameter('required')),
+                'required' => $this->getParameter('required'),
             ));
         }
     }
