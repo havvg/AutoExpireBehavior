@@ -1,6 +1,7 @@
 {
     "name": "havvg/propel-autoexpire-behavior",
     "description": "The AutoExpireBehavior adds automatic expiration to your model.",
+    "license": "MIT",
     "keywords": [ "propel", "behavior", "expiration", "auto-expire" ],
     "authors": [
         {
